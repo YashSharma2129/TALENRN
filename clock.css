@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Pooppins", Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+.y {
+  width: 100%;
+  min-height: 100vh;
+  /* background: linear-gradient(45deg, #1b3a6a, #33d062);*/
+  color: #fff;
+  Background: linear-gradient(45deg, #673ab7, #9c27b0);
+ 
+  position: relative;
+  animation: gradientAnimation 2s linear infinite alternate;
+}
+.container {
+  width: 800px;
+  height: 180px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50px;
+  transform: translate(-50%, -50%);
+  background:blueviolet;
+}
+.clock {
+  width: 100%;
+  height: 100%;
+  background: rgba(116, 40, 123, 0.11);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  backdrop-filter: blur(40px);
+}
+.container::before {
+  content: " ";
+  width: 180px;
+  height: 180px;
+  background: #f41b75;
+  border-radius: 5px;
+  position: absolute;
+  left: -50px;
+  top: -50px;
+  z-index: -1;
+  object-fit: cover;
+}
+.container::after {
+  content: " ";
+  width: 180px;
+  animation: pulse 1s ease-in-out infinite alternate;
+  height: 180px;
+  background: #419aff;
+  border-radius: 50%;
+  position: absolute;
+  right: -30px;
+  bottom: -50px;
+  z-index: -1;
+}
+.clock span {
+  font-size: 80px;
+  width: 110px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.clock span::after {
+  font-size: 16px;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translate(-50%);
+}
+#hours::after {
+  content: "HOURS";
+}
+#minutes::after {
+  content: "MIN";
+}
+#seconds::after {
+  content: "SEC";
+}
+
+ @keyframes gradientAnimation {
+    0% {
+      background: linear-gradient(45deg, #ff6f61, #ffcb57);
+    }
+    50% {
+      background: linear-gradient(45deg, #662684, #2c9e3b);
+    }
+    100% {
+      background: linear-gradient(45deg, #1b3a6a, #4b33d0);
+    } }
+   
+ 
+.container:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.clock span.show {
+  opacity: 9;
+  transform: scale(7.8); /* Scale up slightly when updated */
+}
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.05); /* Slight scale up and down */
+    }
+  }
